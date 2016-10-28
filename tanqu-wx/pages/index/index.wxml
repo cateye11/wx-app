@@ -21,7 +21,7 @@
 
 <template name="list-item">
   <view class="list-item">
-    <image src="{{imgUrl}}"></image>
+    <image src="{{imgSpec.url}}" style="height: {{imgSpec.height/imgSpec.width*20}}rem"></image>
     <text>{{title}}</text>
   </view>
 </template>
