@@ -1,0 +1,10 @@
+<view class="section flex-row">
+    <view class="flex-item c-red"></view>
+    <view class="flex-item c-green"></view>
+    <view class="flex-item c-blue"></view>
+</view>
+<view class="section flex-column">
+    <view class="flex-item c-red"></view>
+    <view class="flex-item c-green"></view>
+    <view class="flex-item c-blue"></view>
+</view>

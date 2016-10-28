@@ -1,4 +1,4 @@
-<view bindtap="viewTap">{{message}}</view>
+<view bindtap="viewTap" class="common-style title">{{message}}</view>
 <view id="item-{{id}}" bindtap="sayId">id-target</view>
 <view hidden="{{true}}">Hidden</view>
 <view wx:for="{{['零','一','二','三','四','五']}}" wx:for-index="idx" wx:for-item="itemName">
@@ -25,3 +25,4 @@
 <!--template只能引用直接引用的模板，不能传递引用-->
 <template is="list-item" data="{{text: 'forbar'}}" />
 <include src="../../common/templ.wxml" />
+<view bindtap="turnPage" >跳转</view>

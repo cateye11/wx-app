@@ -47,5 +47,10 @@ Page({
     },
     sayId(e) {
         console.log(e.target.id);
+    },
+    turnPage() {
+        wx.navigateTo({
+            url: '../flex/flex'
+        });
     }
 });
