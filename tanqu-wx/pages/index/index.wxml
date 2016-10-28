@@ -1,0 +1,27 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="flex-row head-nav">
+    <view>热门</view>
+    <view style="border-left:2px solid #000;border-right:2px solid #000;">订阅</view>
+    <view>专题</view>
+  </view>
+  <view class="flex-row platform-nav">
+    <view>Instagram</view>
+    <view>Facebook</view>
+    <view>Twitter</view>
+    <view>Weibo</view>
+  </view>
+  <view class="scorll">
+    <scroll-view style="height:100%;" scroll-y="true">
+      <template is="list-item" data="{{...item}}" wx:for="{{list}}"></template>
+    </scroll-view>
+  </view>
+  <view class="footer-nav"></view>
+</view>
+
+<template name="list-item">
+  <view class="list-item">
+    <image src="{{imgUrl}}"></image>
+    <text>{{title}}</text>
+  </view>
+</template>
