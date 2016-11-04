@@ -6,17 +6,37 @@
     <view>专题</view>
   </view>
   <view class="flex-row platform-nav">
-    <view>Instagram</view>
-    <view>Facebook</view>
-    <view>Twitter</view>
-    <view>Weibo</view>
+    <view data-platform="0" bindtap="changeSwiper">Instagram</view>
+    <view data-platform="1" bindtap="changeSwiper">Facebook</view>
+    <view data-platform="2" bindtap="changeSwiper">Twitter</view>
+    <view data-platform="3" bindtap="changeSwiper">Weibo</view>
   </view>
   <view class="scorll">
-    <scroll-view style="height:100%;" scroll-y="true">
-      <template is="list-item" data="{{...item}}" wx:for="{{list}}"></template>
-    </scroll-view>
+    <!--<scroll-view style="height:100%;" scroll-y="true">-->
+    <swiper class="swiper" bindchange="swiperChange" current="{{currentSwiper}}" duration="500">
+      <swiper-item>
+        <scroll-view style="height:100%;" scroll-y="true">
+          <template is="list-item" data="{{...item}}" wx:for="{{list}}" wx:key="{{index}}"></template>
+        </scroll-view>
+      </swiper-item>
+      <swiper-item>
+        <scroll-view style="height:100%;" scroll-y="true">
+          <template is="list-item" data="{{...item}}" wx:for="{{list}}" wx:key="{{index}}"></template>
+        </scroll-view>
+      </swiper-item>
+      <swiper-item>
+        <scroll-view style="height:100%;" scroll-y="true">
+          <template is="list-item" data="{{...item}}" wx:for="{{list}}" wx:key="{{index}}"></template>
+        </scroll-view>
+      </swiper-item>
+      <swiper-item>
+        <scroll-view style="height:100%;" scroll-y="true">
+          <template is="list-item" data="{{...item}}" wx:for="{{list}}" wx:key="{{index}}"></template>
+        </scroll-view>
+      </swiper-item>
+    </swiper>
+    <!--</scroll-view>-->
   </view>
-  <view class="footer-nav"></view>
 </view>
 
 <template name="list-item">

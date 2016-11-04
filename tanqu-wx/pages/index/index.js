@@ -12,7 +12,22 @@ Page({
     
   },
 
+  swiperChange(e) {
+      this.setData({
+          currentSwiper: Number(e.detail.current)
+      });
+  },
+
+  changeSwiper(e) {
+      let index = e.target.dataset.platform;
+      console.log(index);
+      this.setData({
+          currentSwiper: index
+      });
+  },
+
   data: {
+    currentSwiper: 0,
     list: [
       {
           "nickname": "updates_in_cinema_v2.0",
