@@ -10,6 +10,9 @@
     <view data-platform="1" bindtap="changeSwiper">Facebook</view>
     <view data-platform="2" bindtap="changeSwiper">Twitter</view>
     <view data-platform="3" bindtap="changeSwiper">Weibo</view>
+    <view class="nav-bar">
+      <view></view>
+    </view>
   </view>
   <view class="scorll">
     <!--<scroll-view style="height:100%;" scroll-y="true">-->
