@@ -1,50 +1,55 @@
 <!--index.wxml-->
+<import src="hot.wxml" />
 <view class="container">
-  <view class="flex-row head-nav">
-    <view>热门</view>
-    <view style="border-left:2px solid #000;border-right:2px solid #000;">订阅</view>
-    <view>专题</view>
-  </view>
-  <view class="flex-row platform-nav">
-    <view class="platform-nav-item" data-platform="0" bindtap="changeSwiper">Instagram</view>
-    <view class="platform-nav-item" data-platform="1" bindtap="changeSwiper">Facebook</view>
-    <view class="platform-nav-item" data-platform="2" bindtap="changeSwiper">Twitter</view>
-    <view class="platform-nav-item" data-platform="3" bindtap="changeSwiper">Weibo</view>
-    <view class="nav-bar" animation="{{navBarAnimate}}">
-      <view></view>
+    <view class="flex-row head-nav">
+        <view data-type="hot" bindtap="changeType">热门</view>
+        <view data-type="subscribe" bindtap="changeType" style="border-left:2px solid #000;border-right:2px solid #000;">订阅</view>
+        <view data-type="special" bindtap="changeType">专题</view>
     </view>
-  </view>
-  <view class="scorll">
-    <!--<scroll-view style="height:100%;" scroll-y="true">-->
-    <swiper class="swiper" bindchange="swiperChange" current="{{currentSwiper}}" duration="200">
-      <swiper-item>
-        <scroll-view style="height:100%;" scroll-y="true">
-          <template is="list-item" data="{{...item}}" wx:for="{{list}}" wx:key="{{index}}"></template>
-        </scroll-view>
-      </swiper-item>
-      <swiper-item>
-        <scroll-view style="height:100%;" scroll-y="true">
-          <template is="list-item" data="{{...item}}" wx:for="{{list}}" wx:key="{{index}}"></template>
-        </scroll-view>
-      </swiper-item>
-      <swiper-item>
-        <scroll-view style="height:100%;" scroll-y="true">
-          <template is="list-item" data="{{...item}}" wx:for="{{list}}" wx:key="{{index}}"></template>
-        </scroll-view>
-      </swiper-item>
-      <swiper-item>
-        <scroll-view style="height:100%;" scroll-y="true">
-          <template is="list-item" data="{{...item}}" wx:for="{{list}}" wx:key="{{index}}"></template>
-        </scroll-view>
-      </swiper-item>
-    </swiper>
-    <!--</scroll-view>-->
-  </view>
+    <!--hot-->
+    <view class="page" hidden="{{!(currentType=='hot')}}">
+        <view hidden="{{!scrollTop}}" class="platform-nav-pic">
+            <view class="platform-nav-pic-item" data-platform="0" bindtap="changeSwiper"></view>
+            <view class="platform-nav-pic-item" data-platform="1" bindtap="changeSwiper"></view>
+            <view class="platform-nav-pic-item" data-platform="2" bindtap="changeSwiper"></view>
+            <view class="platform-nav-pic-item" data-platform="3" bindtap="changeSwiper"></view>
+        </view>
+        <view hidden="{{scrollTop}}" class="flex-row platform-nav">
+            <view class="platform-nav-item" data-platform="0" bindtap="changeSwiper">Instagram</view>
+            <view class="platform-nav-item" data-platform="1" bindtap="changeSwiper">Facebook</view>
+            <view class="platform-nav-item" data-platform="2" bindtap="changeSwiper">Twitter</view>
+            <view class="platform-nav-item" data-platform="3" bindtap="changeSwiper">Weibo</view>
+            <view class="nav-bar" animation="{{navBarAnimate}}">
+            <view></view>
+            </view>
+        </view>
+        <view class="scorll">
+            <swiper class="swiper" bindchange="swiperChange" current="{{currentSwiper}}" duration="200">
+            <swiper-item>
+                <scroll-view style="height:100%;" scroll-y="true" bindscrolltoupper="scrolltoupper" scrolltoupper="leaveToper" upper-threshold="10">
+                    <template is="list-item" data="{{...item}}" wx:for="{{list}}" wx:key="{{index}}"></template>
+                </scroll-view>
+            </swiper-item>
+            <swiper-item>
+                <scroll-view style="height:100%;" scroll-y="true">
+                    <template is="list-item" data="{{...item}}" wx:for="{{list}}" wx:key="{{index}}"></template>
+                </scroll-view>
+            </swiper-item>
+            <swiper-item>
+                <scroll-view style="height:100%;" scroll-y="true">
+                    <template is="list-item" data="{{...item}}" wx:for="{{list}}" wx:key="{{index}}"></template>
+                </scroll-view>
+            </swiper-item>
+            <swiper-item>
+                <scroll-view style="height:100%;" scroll-y="true">
+                    <template is="list-item" data="{{...item}}" wx:for="{{list}}" wx:key="{{index}}"></template>
+                </scroll-view>
+            </swiper-item>
+            </swiper>
+        </view>
+    </view>
+    <!--Subscribe-->
+    <view class="page" hidden="{{!(currentType=='subscribe')}}">订阅</view>
+    <!--special-->
+    <view class="page" hidden="{{!(currentType=='special')}}">专题</view>
 </view>
-
-<template name="list-item">
-  <view class="list-item">
-    <image src="{{imgSpec.url}}" style="height: {{imgSpec.height/imgSpec.width*20}}rem"></image>
-    <text>{{title}}</text>
-  </view>
-</template>

@@ -14,16 +14,30 @@
   align-items: center;
 }
 
+.platform-nav-pic {
+  display: flex;
+  margin: 10px 0 15px 0;
+  justify-content: space-between;
+  padding: 0 0.56rem;
+}
+
+.platform-nav-pic-item {
+  width: 4.3rem;
+  height: 4.3rem;
+  background-color: red;
+  border-radius: 0.4rem;
+}
+
 .platform-nav {
   display: flex;
   width: 100%;
   height: 15px;
-  margin: 15px 0;
+  margin: 10px 0;
   position: relative;
 }
 
 .platform-nav-item {
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   font-weight: bold;
   display: flex;
   flex: 1;
@@ -35,7 +49,7 @@
   border-bottom: 2px solid #000;
   position: absolute;
   /*left: 2.5%;*/
-  bottom: -15px;
+  bottom: -10px;
   display: flex;
   justify-content: center;
 }

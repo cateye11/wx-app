@@ -7,3 +7,9 @@
   height: 100%;
   background-color: #fff;
 }
+
+.page {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
