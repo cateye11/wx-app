@@ -20,7 +20,7 @@
   position: relative;
 }
 
-.platform-nav view {
+.platform-nav-item {
   font-size: 0.8rem;
   font-weight: bold;
   display: flex;
@@ -30,17 +30,19 @@
 
 .nav-bar {
   width: 20%;
-  height: 2px;
-  background-color: #000; 
+  border-bottom: 3px solid #000;
   position: absolute;
+  left: 2.5%;
   bottom: -15px;
+  display: flex;
+  justify-content: center;
 }
 
 .nav-bar view {
-  width: 20px;
-  padding-bottom: 5%;
-  background-color: red;
-  position: absolute;
+  width: 0;
+  height: 0;
+  border: 5px solid transparent;
+  border-bottom-color: #000;
 }
 
 .scorll {
