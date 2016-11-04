@@ -10,13 +10,13 @@
     <view class="platform-nav-item" data-platform="1" bindtap="changeSwiper">Facebook</view>
     <view class="platform-nav-item" data-platform="2" bindtap="changeSwiper">Twitter</view>
     <view class="platform-nav-item" data-platform="3" bindtap="changeSwiper">Weibo</view>
-    <view class="nav-bar">
+    <view class="nav-bar" animation="{{navBarAnimate}}">
       <view></view>
     </view>
   </view>
   <view class="scorll">
     <!--<scroll-view style="height:100%;" scroll-y="true">-->
-    <swiper class="swiper" bindchange="swiperChange" current="{{currentSwiper}}" duration="500">
+    <swiper class="swiper" bindchange="swiperChange" current="{{currentSwiper}}" duration="200">
       <swiper-item>
         <scroll-view style="height:100%;" scroll-y="true">
           <template is="list-item" data="{{...item}}" wx:for="{{list}}" wx:key="{{index}}"></template>

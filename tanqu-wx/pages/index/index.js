@@ -4,8 +4,20 @@ var app = getApp();
 
 Page({
 
-  onLoad() {
-    console.log(this.data);
+//   onLoad() {
+//     console.log(this.data);
+//   },
+
+  onShow() {
+      let animation = wx.createAnimation({
+          duration: 200,
+          timingFunction: 'linear'
+      });
+      this.animation = animation;
+      this.animation.left(4+'%').step();
+      this.setData({
+          navBarAnimate: this.animation.export()
+      });
   },
 
   countRate() {
@@ -13,21 +25,31 @@ Page({
   },
 
   swiperChange(e) {
+      this.currentSwiper = Number(e.detail.current);
       this.setData({
           currentSwiper: Number(e.detail.current)
       });
+      this.navBarAnimation();
   },
 
   changeSwiper(e) {
       let index = e.target.dataset.platform;
-      console.log(index);
       this.setData({
           currentSwiper: index
       });
+      this.navBarAnimation();  
+  },
+
+  navBarAnimation() {
+    this.animation.left(this.data.currentSwiper*25+4+'%').step();
+    this.setData({
+       navBarAnimate: this.animation.export() 
+    });
   },
 
   data: {
     currentSwiper: 0,
+    navBarAnimate: {},
     list: [
       {
           "nickname": "updates_in_cinema_v2.0",

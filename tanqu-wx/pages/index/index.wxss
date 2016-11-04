@@ -7,9 +7,11 @@
 }
 
 .head-nav view {
+  font-size: 0.8rem;
   display: flex;
   flex: 1;
   justify-content: center;
+  align-items: center;
 }
 
 .platform-nav {
@@ -29,10 +31,10 @@
 }
 
 .nav-bar {
-  width: 20%;
-  border-bottom: 3px solid #000;
+  width: 17%;
+  border-bottom: 2px solid #000;
   position: absolute;
-  left: 2.5%;
+  /*left: 2.5%;*/
   bottom: -15px;
   display: flex;
   justify-content: center;
