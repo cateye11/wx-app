@@ -1,10 +1,9 @@
 <!--index.wxml-->
-<import src="hot.wxml" />
 <view class="container">
     <view class="flex-row head-nav">
-        <view data-type="hot" bindtap="changeType">热门</view>
-        <view data-type="subscribe" bindtap="changeType" style="border-left:2px solid #000;border-right:2px solid #000;">订阅</view>
-        <view data-type="special" bindtap="changeType">专题</view>
+        <view class="{{currentType == 'hot' ? 'type-selected' : ''}}" data-type="hot" bindtap="changeType" style="border-right:1px solid #000;">热门</view>
+        <view class="{{currentType == 'subscribe' ? 'type-selected' : ''}}" data-type="subscribe" bindtap="changeType" style="border-left:1px solid #000;border-right:1px solid #000;">订阅</view>
+        <view class="{{currentType == 'special' ? 'type-selected' : ''}}" data-type="special" bindtap="changeType" style="border-left:1px solid #000;">专题</view>
     </view>
     <!--hot-->
     <view class="page" hidden="{{!(currentType=='hot')}}">
@@ -14,7 +13,7 @@
             <view class="platform-nav-pic-item" data-platform="2" bindtap="changeSwiper"></view>
             <view class="platform-nav-pic-item" data-platform="3" bindtap="changeSwiper"></view>
         </view>
-        <view hidden="{{scrollTop}}" class="flex-row platform-nav">
+        <view hidden="{{scrollTop}}" class="platform-nav">
             <view class="platform-nav-item" data-platform="0" bindtap="changeSwiper">Instagram</view>
             <view class="platform-nav-item" data-platform="1" bindtap="changeSwiper">Facebook</view>
             <view class="platform-nav-item" data-platform="2" bindtap="changeSwiper">Twitter</view>
@@ -27,29 +26,97 @@
             <swiper class="swiper" bindchange="swiperChange" current="{{currentSwiper}}" duration="200">
             <swiper-item>
                 <scroll-view style="height:100%;" scroll-y="true" bindscrolltoupper="scrolltoupper" scrolltoupper="leaveToper" upper-threshold="10">
-                    <template is="list-item" data="{{...item}}" wx:for="{{list}}" wx:key="{{index}}"></template>
+                    <template is="hot-list-item" data="{{...item}}" wx:for="{{list}}" wx:key="{{index}}"></template>
                 </scroll-view>
             </swiper-item>
             <swiper-item>
                 <scroll-view style="height:100%;" scroll-y="true">
-                    <template is="list-item" data="{{...item}}" wx:for="{{list}}" wx:key="{{index}}"></template>
+                    <template is="hot-list-item" data="{{...item}}" wx:for="{{list}}" wx:key="{{index}}"></template>
                 </scroll-view>
             </swiper-item>
             <swiper-item>
                 <scroll-view style="height:100%;" scroll-y="true">
-                    <template is="list-item" data="{{...item}}" wx:for="{{list}}" wx:key="{{index}}"></template>
+                    <template is="hot-list-item" data="{{...item}}" wx:for="{{list}}" wx:key="{{index}}"></template>
                 </scroll-view>
             </swiper-item>
             <swiper-item>
                 <scroll-view style="height:100%;" scroll-y="true">
-                    <template is="list-item" data="{{...item}}" wx:for="{{list}}" wx:key="{{index}}"></template>
+                    <template is="hot-list-item" data="{{...item}}" wx:for="{{list}}" wx:key="{{index}}"></template>
                 </scroll-view>
             </swiper-item>
             </swiper>
         </view>
     </view>
-    <!--Subscribe-->
-    <view class="page" hidden="{{!(currentType=='subscribe')}}">订阅</view>
+    <!--subscribe-->
+    <view class="page" hidden="{{!(currentType=='subscribe')}}">
+        <view class="platform-nav">
+            <view class="sub-nav-item" data-platform="0" bindtap="changeSub">全部</view>
+            <view class="sub-nav-item" data-platform="1" bindtap="changeSub">电影</view>
+            <view class="sub-nav-item" data-platform="2" bindtap="changeSub">音乐</view>
+        </view>
+        <view class="scorll">
+            <swiper class="swiper" bindchange="" current="0" duration="200">
+                <swiper-item>
+                    <scroll-view style="height:100%;" scroll-y="true" bindscrolltoupper="scrolltoupper" scrolltoupper="leaveToper" upper-threshold="10">
+                        <template is="sub-list-item" data="{{...item}}" wx:for="{{list}}" wx:key="{{index}}"></template>
+                    </scroll-view>
+                </swiper-item>
+                <swiper-item>
+                    <scroll-view style="height:100%;" scroll-y="true">
+                        <template is="sub-list-item" data="{{...item}}" wx:for="{{list}}" wx:key="{{index}}"></template>
+                    </scroll-view>
+                </swiper-item>
+                <swiper-item>
+                    <scroll-view style="height:100%;" scroll-y="true">
+                        <template is="sub-list-item" data="{{...item}}" wx:for="{{list}}" wx:key="{{index}}"></template>
+                    </scroll-view>
+                </swiper-item>
+            </swiper>
+        </view>
+    </view>
     <!--special-->
-    <view class="page" hidden="{{!(currentType=='special')}}">专题</view>
+    <view class="page" hidden="{{!(currentType=='special')}}">
+        <view class="scorll">
+            <scroll-view style="height:100%;" scroll-y="true">
+                <template is="special-list-item" data="{{...item}}" wx:for="{{list}}" wx:key="{{index}}"></template>
+            </scroll-view>
+        </view>
+    </view>
 </view>
+
+<!--热门list-->
+<template name="hot-list-item">
+    <view class="list-item">
+        <image src="{{imgSpec.url}}" style="height: {{imgSpec.height/imgSpec.width*20}}rem" />
+        <text>{{title}}</text>
+    </view>
+</template>
+
+ <!--订阅list-->
+<template name="sub-list-item">
+    <view class="sub-list-item">
+        <image class="media" src="{{imgSpec.url}}" style="height: {{imgSpec.height/imgSpec.width*20}}rem" />
+        <view class="sub-detail">
+            <view class="ju-between al-center">
+                <view class="fx-row al-center">
+                    <image mode="aspectFill" class="sub-avatar" src="{{avatar}}" />
+                    <view class="fx-col">
+                        <text>text</text>
+                        <text>text</text>
+                    </view>
+                </view>
+                <view>platform</view>
+            </view>
+            <text class="desc">{{title}}</text>
+            <view class="sub-type">#音乐</view>
+        </view>
+    </view>
+</template>
+
+<!--专题list-->
+<template name="special-list-item">
+    <view class="special-list-item">
+        <image mode="aspectFill" src="{{imgSpec.url}}" />
+        <text>{{title}}</text>
+    </view>
+</template>

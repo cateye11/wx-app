@@ -13,3 +13,73 @@
   flex-direction: column;
   flex: 1;
 }
+
+.fx-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.fx-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.ju-start {
+  display: flex;
+  justify-content: start;
+}
+
+.ju-center {
+  display: flex;
+  justify-content: center;
+}
+
+.ju-end {
+  display: flex;
+  justify-content: end;
+}
+
+.ju-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ju-around {
+  display: flex;
+  justify-content: space-around;
+}
+
+.al-start {
+  display: flex;
+  align-items: start;
+}
+
+.al-center {
+  display: flex;
+  align-items: center;
+}
+
+.al-end {
+  display: flex;
+  align-items: end;
+}
+
+.fx-1 {
+  display: flex;
+  flex: 1;
+}
+
+.fx-2 {
+  display: flex;
+  flex: 2;
+}
+
+.fx-3 {
+  display: flex;
+  flex: 3;
+}
+
+.fx-4 {
+  display: flex;
+  flex: 4;
+}
