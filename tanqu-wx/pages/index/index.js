@@ -23,7 +23,6 @@ Page({
     changeType(e) {
         let type = e.target.dataset.type;
         if (type == this.data.currentType) return;
-        e.target.addClass = 'active';
         this.setData({
             currentType: type
         });

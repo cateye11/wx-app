@@ -87,8 +87,23 @@
 <!--热门list-->
 <template name="hot-list-item">
     <view class="list-item">
-        <image src="{{imgSpec.url}}" style="height: {{imgSpec.height/imgSpec.width*20}}rem" />
-        <text>{{title}}</text>
+        <view class="madia-area">
+            <image class="media" src="{{imgSpec.url}}" style="height: {{imgSpec.height/imgSpec.width*20}}rem" />
+            <view class="hot-author-info ju-between al-center">
+                <view class="fx-row al-center">
+                    <image mode="aspectFill" class="sub-avatar" src="{{avatar}}" />
+                    <view class="fx-col">
+                        <text class="author-name">{{nickname}}</text>
+                        <text class="pub-time">{{publishTime}}</text>
+                    </view>
+                </view>
+                <view class="sub-platform fx-row al-center">
+                    <text>来自Instagram</text>
+                    <image src="../../src/instagram.png" />
+                </view>
+            </view>
+        </view>
+        <text class="hot-desc">{{title}}</text>
     </view>
 </template>
 
@@ -101,11 +116,14 @@
                 <view class="fx-row al-center">
                     <image mode="aspectFill" class="sub-avatar" src="{{avatar}}" />
                     <view class="fx-col">
-                        <text>text</text>
-                        <text>text</text>
+                        <text class="author-name">{{nickname}}</text>
+                        <text class="pub-time">{{publishTime}}</text>
                     </view>
                 </view>
-                <view>platform</view>
+                <view class="sub-platform fx-row al-center">
+                    <text>来自Instagram</text>
+                    <image src="../../src/instagram.png" />
+                </view>
             </view>
             <text class="desc">{{title}}</text>
             <view class="sub-type">#音乐</view>
