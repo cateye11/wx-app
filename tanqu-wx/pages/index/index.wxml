@@ -7,25 +7,25 @@
     </view>
     <!--hot-->
     <view class="page" hidden="{{!(currentType=='hot')}}">
-        <view hidden="{{!scrollTop}}" class="platform-nav-pic">
+        <!--<view hidden="{{!scrollTop}}" class="platform-nav-pic">
             <view class="platform-nav-pic-item" data-platform="0" bindtap="changeSwiper"></view>
             <view class="platform-nav-pic-item" data-platform="1" bindtap="changeSwiper"></view>
             <view class="platform-nav-pic-item" data-platform="2" bindtap="changeSwiper"></view>
             <view class="platform-nav-pic-item" data-platform="3" bindtap="changeSwiper"></view>
-        </view>
-        <view hidden="{{scrollTop}}" class="platform-nav">
+        </view>-->
+        <view class="platform-nav">
             <view class="platform-nav-item" data-platform="0" bindtap="changeSwiper">Instagram</view>
             <view class="platform-nav-item" data-platform="1" bindtap="changeSwiper">Facebook</view>
             <view class="platform-nav-item" data-platform="2" bindtap="changeSwiper">Twitter</view>
             <view class="platform-nav-item" data-platform="3" bindtap="changeSwiper">Weibo</view>
-            <view class="nav-bar" animation="{{navBarAnimate}}">
-            <view></view>
+            <view class="nav-bar {{'hot-bar-left-'+currentSwiper}}">
+                <view></view>
             </view>
         </view>
         <view class="scorll">
             <swiper class="swiper" bindchange="swiperChange" current="{{currentSwiper}}" duration="200">
             <swiper-item>
-                <scroll-view style="height:100%;" scroll-y="true" bindscrolltoupper="scrolltoupper" scrolltoupper="leaveToper" upper-threshold="10">
+                <scroll-view style="height:100%;" scroll-y="true">
                     <template is="hot-list-item" data="{{...item}}" wx:for="{{list}}" wx:key="{{index}}"></template>
                 </scroll-view>
             </swiper-item>
@@ -49,15 +49,18 @@
     </view>
     <!--subscribe-->
     <view class="page" hidden="{{!(currentType=='subscribe')}}">
-        <view class="platform-nav">
-            <view class="sub-nav-item" data-platform="0" bindtap="changeSub">全部</view>
-            <view class="sub-nav-item" data-platform="1" bindtap="changeSub">电影</view>
-            <view class="sub-nav-item" data-platform="2" bindtap="changeSub">音乐</view>
+        <view class="platform-nav" >
+            <view class="sub-nav-item" data-sub="0" bindtap="changeSub">全部</view>
+            <view class="sub-nav-item" data-sub="1" bindtap="changeSub">电影</view>
+            <view class="sub-nav-item" data-sub="2" bindtap="changeSub">音乐</view>
+            <view class="nav-bar {{'sub-bar-left-'+currentSub}}" style="width: 10%;">
+                <view></view>
+            </view>
         </view>
         <view class="scorll">
-            <swiper class="swiper" bindchange="" current="0" duration="200">
+            <swiper class="swiper" bindchange="subChange" current="{{currentSub}}" duration="200">
                 <swiper-item>
-                    <scroll-view style="height:100%;" scroll-y="true" bindscrolltoupper="scrolltoupper" scrolltoupper="leaveToper" upper-threshold="10">
+                    <scroll-view style="height:100%;" scroll-y="true">
                         <template is="sub-list-item" data="{{...item}}" wx:for="{{list}}" wx:key="{{index}}"></template>
                     </scroll-view>
                 </swiper-item>
