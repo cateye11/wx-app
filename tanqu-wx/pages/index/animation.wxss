@@ -25,3 +25,17 @@
 .sub-bar-left-2 {
     left: 32%;
 }
+
+.zoom {
+    animation: zoom-in 0.2s ease-out;
+}
+
+@keyframes zoom-in {
+    from {
+        transform: scale(1.05);
+        opacity: 0;
+    } to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}

@@ -6,7 +6,7 @@
         <view class="{{currentType == 'special' ? 'type-selected' : ''}}" data-type="special" bindtap="changeType" style="border-left:1px solid #000;">专题</view>
     </view>
     <!--hot-->
-    <view class="page" hidden="{{!(currentType=='hot')}}">
+    <view class="page {{currentType=='hot' ? 'zoom' : ''}}" hidden="{{!(currentType=='hot')}}">
         <!--<view hidden="{{!scrollTop}}" class="platform-nav-pic">
             <view class="platform-nav-pic-item" data-platform="0" bindtap="changeSwiper"></view>
             <view class="platform-nav-pic-item" data-platform="1" bindtap="changeSwiper"></view>
@@ -48,7 +48,7 @@
         </view>
     </view>
     <!--subscribe-->
-    <view class="page" hidden="{{!(currentType=='subscribe')}}">
+    <view class="page {{currentType=='subscribe' ? 'zoom' : ''}}" hidden="{{!(currentType=='subscribe')}}">
         <view class="platform-nav" >
             <view class="sub-nav-item" data-sub="0" bindtap="changeSub">全部</view>
             <view class="sub-nav-item" data-sub="1" bindtap="changeSub">电影</view>
@@ -78,7 +78,7 @@
         </view>
     </view>
     <!--special-->
-    <view class="page" hidden="{{!(currentType=='special')}}">
+    <view class="page {{currentType=='special' ? 'zoom' : ''}}" hidden="{{!(currentType=='special')}}">
         <view class="scorll">
             <scroll-view style="height:100%;" scroll-y="true">
                 <template is="special-list-item" data="{{...item}}" wx:for="{{list}}" wx:key="{{index}}"></template>
