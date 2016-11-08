@@ -13,7 +13,6 @@
   flex: 1;
   justify-content: center;
   align-items: center;
-  transition: all ease-out 0.2s;
 }
 
 .type-selected {
@@ -75,7 +74,7 @@
 }
 
 .swiper {
-  height: 100%;
+  width: 100%;
 }
 
 .list-item {
@@ -187,9 +186,7 @@
 
 /*专题*/
 .special-list-item {
-  display: flex;
-  height: 10rem;
-  border-bottom: 1px solid black;
+  height: 11rem;
   position: relative;
 }
 
@@ -198,10 +195,11 @@
   height: 100%;
 }
 
-.special-list-item text {
-  font-size: 0.9rem;
-  color: #fff;
+.special-title {
   position: absolute;
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #fff;
   top: 3rem;
   padding: 0 2rem;
   line-height: 1.5;

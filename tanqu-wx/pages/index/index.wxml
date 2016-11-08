@@ -23,28 +23,31 @@
             </view>
         </view>
         <view class="scorll">
-            <swiper class="swiper" bindchange="swiperChange" current="{{currentSwiper}}" duration="200">
-            <swiper-item>
-                <scroll-view style="height:100%;" scroll-y="true">
-                    <template is="hot-list-item" data="{{...item}}" wx:for="{{list}}" wx:key="{{index}}"></template>
-                </scroll-view>
-            </swiper-item>
-            <swiper-item>
-                <scroll-view style="height:100%;" scroll-y="true">
-                    <template is="hot-list-item" data="{{...item}}" wx:for="{{list}}" wx:key="{{index}}"></template>
-                </scroll-view>
-            </swiper-item>
-            <swiper-item>
-                <scroll-view style="height:100%;" scroll-y="true">
-                    <template is="hot-list-item" data="{{...item}}" wx:for="{{list}}" wx:key="{{index}}"></template>
-                </scroll-view>
-            </swiper-item>
-            <swiper-item>
-                <scroll-view style="height:100%;" scroll-y="true">
-                    <template is="hot-list-item" data="{{...item}}" wx:for="{{list}}" wx:key="{{index}}"></template>
-                </scroll-view>
-            </swiper-item>
-            </swiper>
+            <scroll-view style="height:100%;" scroll-y="true">
+                <template is="hot-list-item" data="{{...item}}" wx:for="{{list}}" wx:key="{{index}}"></template>
+            </scroll-view>
+            <!--<swiper class="swiper fx-1" bindchange="swiperChange" current="{{currentSwiper}}" duration="200" >
+                <swiper-item style="background-color:blue;height:300px;">
+                    <scroll-view style="height:100%;" scroll-y="true">
+                        <template is="hot-list-item" data="{{...item}}" wx:for="{{list}}" wx:key="{{index}}"></template>
+                    </scroll-view>
+                </swiper-item>
+                <swiper-item>
+                    <scroll-view style="height:100%;" scroll-y="true">
+                        <template is="hot-list-item" data="{{...item}}" wx:for="{{list}}" wx:key="{{index}}"></template>
+                    </scroll-view>
+                </swiper-item>
+                <swiper-item>
+                    <scroll-view style="height:100%;" scroll-y="true">
+                        <template is="hot-list-item" data="{{...item}}" wx:for="{{list}}" wx:key="{{index}}"></template>
+                    </scroll-view>
+                </swiper-item>
+                <swiper-item>
+                    <scroll-view style="height:100%;" scroll-y="true">
+                        <template is="hot-list-item" data="{{...item}}" wx:for="{{list}}" wx:key="{{index}}"></template>
+                    </scroll-view>
+                </swiper-item>
+            </swiper>-->
         </view>
     </view>
     <!--subscribe-->
@@ -58,7 +61,10 @@
             </view>
         </view>
         <view class="scorll">
-            <swiper class="swiper" bindchange="subChange" current="{{currentSub}}" duration="200">
+            <scroll-view style="height:100%;" scroll-y="true">
+                <template is="sub-list-item" data="{{...item}}" wx:for="{{list}}" wx:key="{{index}}"></template>
+            </scroll-view>
+            <!--<swiper class="swiper" bindchange="subChange" current="{{currentSub}}" duration="200">
                 <swiper-item>
                     <scroll-view style="height:100%;" scroll-y="true">
                         <template is="sub-list-item" data="{{...item}}" wx:for="{{list}}" wx:key="{{index}}"></template>
@@ -74,7 +80,7 @@
                         <template is="sub-list-item" data="{{...item}}" wx:for="{{list}}" wx:key="{{index}}"></template>
                     </scroll-view>
                 </swiper-item>
-            </swiper>
+            </swiper>-->
         </view>
     </view>
     <!--special-->
@@ -138,6 +144,6 @@
 <template name="special-list-item">
     <view class="special-list-item">
         <image mode="aspectFill" src="{{imgSpec.url}}" />
-        <text>{{title}}</text>
+        <view class="special-title">{{title}}</view>
     </view>
 </template>
