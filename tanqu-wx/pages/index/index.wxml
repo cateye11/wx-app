@@ -20,23 +20,21 @@
         </view>
         <view class="scorll">
             <scroll-view style="height:100%;" scroll-y="true">
-                <template is="hot-list-item" data="{{...item}}" wx:for="{{hotDataList}}" wx:key="{{index}}"></template>
+                <template is="hot-list-item" data="{{...item, playingId: playingId}}" wx:for="{{hotDataList}}" wx:key="{{index}}"></template>
             </scroll-view>
         </view>
     </view>
     <!--subscribe-->
     <view class="page" hidden="{{!(currentType=='subscribe')}}">
         <view class="platform-nav" >
-            <view class="sub-nav-item" data-sub="0" bindtap="changeSub">全部</view>
-            <view class="sub-nav-item" data-sub="1" bindtap="changeSub">电影</view>
-            <view class="sub-nav-item" data-sub="2" bindtap="changeSub">音乐</view>
-            <view class="nav-bar {{'sub-bar-left-'+currentSub}}" style="width: 10%;">
+            <view class="sub-nav-item">全部</view>
+            <view class="nav-bar" style="width: 10%;left: 2%;">
                 <view></view>
             </view>
         </view>
         <view class="scorll">
             <scroll-view style="height:100%;" scroll-y="true">
-                <template is="sub-list-item" data="{{...item}}" wx:for="{{list}}" wx:key="{{index}}"></template>
+                <template is="sub-list-item" data="{{...item}}" wx:for="{{subDataList}}" wx:key="{{index}}"></template>
             </scroll-view>
         </view>
     </view>
@@ -54,7 +52,7 @@
 <template name="hot-list-item">
     <view class="list-item">
         <view class="madia-area">
-            <image class="media" src="{{imageSpec[1].url}}" style="height: {{imageSpec[1].height/imageSpec[1].width*20}}rem" />
+            <template is="{{type=='video' ? 'hot-video' : 'hot-image'}}" data="{{imageSpec: imageSpec, videoSpec: videoSpec, id: imageId, playingId: playingId}}"></template> 
             <view class="hot-author-info ju-between al-center">
                 <view class="fx-row al-center">
                     <image mode="aspectFill" class="sub-avatar" src="{{author.avatar}}" />
@@ -73,16 +71,30 @@
     </view>
 </template>
 
+<template name="hot-image">
+     <image class="media" src="{{imageSpec[1].url}}" style="height: {{imageSpec[1].height/imageSpec[1].width*20}}rem" />
+</template>
+
+<template name="hot-video">
+    <view bindtap="videoPlay" data-imgid="{{id}}">
+        <image class="play-icon" src="../../src/play.png" />
+        <image wx:if="{{!(playingId == id)}}" class="media" src="{{videoSpec.coverUrl}}" style="height: {{videoSpec.height/videoSpec.width*20}}rem"></image>
+        <video wx:if="{{playingId == id}}" controls="" src="{{videoSpec.videoUrl}}" autoplay="1"  style="height: {{videoSpec.height/videoSpec.width*20}}rem" ></video>
+    </view>
+</template>
+
  <!--订阅list-->
 <template name="sub-list-item">
     <view class="sub-list-item">
-        <image class="media" src="{{imgSpec.url}}" style="height: {{imgSpec.height/imgSpec.width*20}}rem" />
+        <view class="madia-area">
+            <template is="{{type=='video' ? 'hot-video' : 'hot-image'}}" data="{{imageSpec: imageSpec, videoSpec: videoSpec}}"></template>
+        </view>
         <view class="sub-detail">
             <view class="ju-between al-center">
                 <view class="fx-row al-center">
-                    <image mode="aspectFill" class="sub-avatar" src="{{avatar}}" />
+                    <image mode="aspectFill" class="sub-avatar" src="{{author.avatar}}" />
                     <view class="fx-col">
-                        <text class="author-name">{{nickname}}</text>
+                        <text class="author-name">{{author.nickname}}</text>
                         <text class="pub-time">{{publishTime}}</text>
                     </view>
                 </view>

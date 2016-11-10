@@ -10,8 +10,8 @@ Page({
 
     data: {
         currentType: 'hot',
-        currentSub: 0,
         currentSwiper: 0,
+        playingId: 0,
         hotDataList: [],
         subDataList: [],
         specialDataList: []
@@ -34,13 +34,14 @@ Page({
         });
     },
 
-    querySubInfo(type, page) {
+    querySubInfo(page) {
         let data = {
             locale: 'zh_CN',
             page: page || 1,
-            pageSize: 10
+            pageSize: 10,
+            userId: 7298
         };
-        this.server(data, 'subscribe/userInterestSubscribe/1', (res) => {
+        this.server(data, 'subscribe/userInterestSubscribe', (res) => {
             console.log(res);
             if (res.data.meta.statusCode == 200) {
                 this.setData({
@@ -75,7 +76,7 @@ Page({
         if (type == 'hot') {
 
         } else if (type == 'subscribe') {
-            this.querySubInfo('123', 1);
+            this.querySubInfo(1);
         } else if (type == 'special') {
             this.querySpecialInfo(1);
         }
@@ -90,10 +91,11 @@ Page({
         this.queryHotInfo(platform, 1);
     },
 
-    changeSub(e) {
-        let index = e.target.dataset.sub;
+    videoPlay(e) {
+        let id = e.currentTarget.dataset.imgid;
+        console.log(id);
         this.setData({
-            currentSub: index
+            playingId: id
         });
     },
 

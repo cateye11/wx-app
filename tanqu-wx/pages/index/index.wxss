@@ -3,6 +3,7 @@
 .head-nav {
   width: 100%;
   display: flex;
+  background-color: #fff;
 }
 
 .head-nav view {
@@ -102,10 +103,24 @@
   position: relative;
 }
 
+video {
+  width: 100%;
+}
+
+.play-icon {
+  position: absolute;
+  width: 3rem;
+  height: 3rem;
+  top: 50%;
+  left: 50%;
+  margin-top: -1.5rem;
+  margin-left: -1.5rem;
+}
+
 .hot-author-info {
   width: 100%;
   position: absolute;
-  bottom: 10px;
+  bottom: 15px;
   padding: 0 10px;
   box-sizing: border-box;
   color: #fff;
@@ -159,8 +174,8 @@
 }
 
 .sub-avatar {
-  width: 1.2rem;
-  height: 1.2rem;
+  width: 1.3rem;
+  height: 1.3rem;
   border-radius: 0.7rem;
   margin-right: 6px;
 }
@@ -180,6 +195,7 @@
   font-size: 0.5rem;
   margin-right: 5px;
   font-weight: bold;
+  line-height: 1;
 }
 
 .sub-platform image {
