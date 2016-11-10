@@ -14,7 +14,7 @@
             <view class="platform-nav-item" data-index="1" data-platform="facebook" bindtap="changePlatform">Facebook</view>
             <view class="platform-nav-item" data-index="2" data-platform="twitter" bindtap="changePlatform">Twitter</view>
             <view class="platform-nav-item" data-index="3" data-platform="weibo" bindtap="changePlatform">Weibo</view>
-            <view class="nav-bar {{'hot-bar-left-'+currentSwiper}}">
+            <view class="nav-bar {{'hot-bar-left-'+platIndex}}">
                 <view></view>
             </view>
         </view>
@@ -34,7 +34,7 @@
         </view>
         <view class="scorll">
             <scroll-view style="height:100%;" scroll-y="true">
-                <template is="sub-list-item" data="{{...item}}" wx:for="{{subDataList}}" wx:key="{{index}}"></template>
+                <template is="sub-list-item" data="{{...item, playingId: playingId}}" wx:for="{{subDataList}}" wx:key="{{index}}"></template>
             </scroll-view>
         </view>
     </view>
@@ -72,7 +72,7 @@
 </template>
 
 <template name="hot-image">
-     <image class="media" src="{{imageSpec[1].url}}" style="height: {{imageSpec[1].height/imageSpec[1].width*20}}rem" />
+     <image class="media" src="{{imageSpec[0].url}}" style="height: {{imageSpec[0].height/imageSpec[0].width*20}}rem" />
 </template>
 
 <template name="hot-video">
@@ -87,7 +87,7 @@
 <template name="sub-list-item">
     <view class="sub-list-item">
         <view class="madia-area">
-            <template is="{{type=='video' ? 'hot-video' : 'hot-image'}}" data="{{imageSpec: imageSpec, videoSpec: videoSpec}}"></template>
+            <template is="{{type=='video' ? 'hot-video' : 'hot-image'}}" data="{{imageSpec: imageSpec, videoSpec: videoSpec, id: imageId, playingId: playingId}}"></template>
         </view>
         <view class="sub-detail">
             <view class="ju-between al-center">
@@ -104,7 +104,7 @@
                 </view>
             </view>
             <text class="desc">{{title}}</text>
-            <view class="sub-type">#音乐</view>
+            <view class="sub-type">#{{interestTags && interestTags[0].tag}}</view>
         </view>
     </view>
 </template>

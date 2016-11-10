@@ -10,7 +10,8 @@ Page({
 
     data: {
         currentType: 'hot',
-        currentSwiper: 0,
+        platIndex: 0,
+        currentPlat: 'instagram',
         playingId: 0,
         hotDataList: [],
         subDataList: [],
@@ -71,10 +72,11 @@ Page({
         let type = e.target.dataset.type;
         if (type == this.data.currentType) return;
         this.setData({
-            currentType: type
+            currentType: type,
+            playingId: 0
         });
         if (type == 'hot') {
-
+            this.queryHotInfo(this.data.currentPlat, 1);
         } else if (type == 'subscribe') {
             this.querySubInfo(1);
         } else if (type == 'special') {
@@ -86,7 +88,8 @@ Page({
         let index = e.target.dataset.index,
             platform = e.target.dataset.platform
         this.setData({
-            currentSwiper: index
+            platIndex: index,
+            currentPlat: platform
         });
         this.queryHotInfo(platform, 1);
     },
