@@ -1,5 +1,8 @@
 <!--index.wxml-->
 <view class="container">
+    <!--<view hidden="{{!isLoading}}" class="loading">
+        <image src="../../src/load.png" />
+    </view>-->
     <view class="flex-row head-nav al-center">
         <view class="{{currentType == 'hot' ? 'type-selected' : ''}}" data-type="hot" bindtap="changeType">热门</view>
         <text>|</text>
@@ -19,7 +22,7 @@
             </view>
         </view>
         <view class="scorll">
-            <scroll-view style="height:100%;" scroll-y="true">
+            <scroll-view scroll-y="true">
                 <template is="hot-list-item" data="{{...item, playingId: playingId}}" wx:for="{{hotDataList}}" wx:key="{{index}}"></template>
             </scroll-view>
         </view>

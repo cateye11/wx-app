@@ -15,7 +15,8 @@ Page({
         playingId: 0,
         hotDataList: [],
         subDataList: [],
-        specialDataList: []
+        specialDataList: [],
+        isLoading: false
     },
 
     queryHotInfo(type, page) {
@@ -25,14 +26,20 @@ Page({
             platform: type || 'instagram',
             locale: 'zh_CN'
         };
+        this.setData({
+            isLoading: true
+        });
         this.server(data, 'posts/hot', (res) => {
-            console.log(res);
+            // console.log(res);
             if (res.data.meta.statusCode == 200) {
+                console.log('完成');
                 this.setData({
-                    hotDataList: res.data.content.map((item, index) => {
-                        item.publishTime = this.timeFormat(item.publishTime);
-                        return item;
-                    })
+                    // hotDataList: res.data.content.map((item, index) => {
+                    //     item.publishTime = this.timeFormat(item.publishTime);
+                    //     return item;
+                    // }),
+                    hotDataList: res.data.content,
+                    isLoading: false
                 });
             }
         });
@@ -45,10 +52,14 @@ Page({
             pageSize: 15,
             userId: 7298
         };
+        this.setData({
+            isLoading: true
+        });
         this.server(data, 'subscribe/userInterestSubscribe', (res) => {
-            console.log(res);
+            // console.log(res);
             if (res.data.meta.statusCode == 200) {
                 this.setData({
+                    isLoading: false,
                     subDataList: res.data.content.map((item, index) => {
                         item.publishTime = this.timeFormat(item.publishTime);
                         return item;
@@ -64,11 +75,15 @@ Page({
             page: page || 1,
             pageSize: 15,
         };
+        this.setData({
+            isLoading: true
+        });
         this.server(data, 'trending/topics', (res) => {
-            console.log(res);
+            // console.log(res);
             if (res.data.meta.statusCode == 200) {
                 this.setData({
-                    specialDataList: res.data.content
+                    specialDataList: res.data.content,
+                    isLoading: false
                 });
             }
         });
@@ -121,7 +136,7 @@ Page({
             data: data || {},
             method: method || 'GET',
             header: {
-                'Content-Type': 'application/x-www-form-urlencoded',
+                // 'Content-Type': 'application/x-www-form-urlencoded',
                 'accessToken': '1a862e0d-036a-4c80-bdb5-6ffdaaf67f999a6a1aaafe73c572b7374828b03a1881'
             },
             complete(res) {

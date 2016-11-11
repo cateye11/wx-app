@@ -59,7 +59,7 @@
   bottom: 0;
   display: flex;
   justify-content: center;
-  transition: all linear 0.2s;
+  /*transition: all linear 0.2s;*/
 }
 
 .nav-bar view {
@@ -74,6 +74,13 @@
   flex-direction: column;
   width: 100%;
   flex: 1;
+  position: relative;
+}
+
+.scorll scroll-view {
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }
 
 .swiper {
@@ -228,3 +235,42 @@ video {
   line-height: 1.5;
   text-align: center;
 }
+
+/*loading*/
+.loading {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 2;
+  background-color: transparent;
+}
+
+.loading image {
+  width: 4rem;
+  height: 4rem;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-top: -2rem;
+  margin-left: -2rem;
+  -webkit-animation: rotate 1s linear infinite;
+  -moz-animation: rotate 1s linear infinite;
+  animation: rotate 1s linear infinite;
+}
+
+@-webkit-keyframes rotate {
+  from {
+    -webkit-transform: rotate(0deg);
+  } to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  } to {
+    transform: rotate(360deg);
+  }
+}
+
