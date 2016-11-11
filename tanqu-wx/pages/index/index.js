@@ -21,7 +21,7 @@ Page({
     queryHotInfo(type, page) {
          let data = {
             page: page || 1,
-            pageSize: 10,
+            pageSize: 15,
             platform: type || 'instagram',
             locale: 'zh_CN'
         };
@@ -29,7 +29,10 @@ Page({
             console.log(res);
             if (res.data.meta.statusCode == 200) {
                 this.setData({
-                    hotDataList: res.data.content
+                    hotDataList: res.data.content.map((item, index) => {
+                        item.publishTime = this.timeFormat(item.publishTime);
+                        return item;
+                    })
                 });
             }
         });
@@ -39,14 +42,17 @@ Page({
         let data = {
             locale: 'zh_CN',
             page: page || 1,
-            pageSize: 10,
+            pageSize: 15,
             userId: 7298
         };
         this.server(data, 'subscribe/userInterestSubscribe', (res) => {
             console.log(res);
             if (res.data.meta.statusCode == 200) {
                 this.setData({
-                    subDataList: res.data.content
+                    subDataList: res.data.content.map((item, index) => {
+                        item.publishTime = this.timeFormat(item.publishTime);
+                        return item;
+                    })
                 });
             }
         });
@@ -56,7 +62,7 @@ Page({
         let data = {
             locale: 'zh_CN',
             page: page || 1,
-            pageSize: 10,
+            pageSize: 15,
         };
         this.server(data, 'trending/topics', (res) => {
             console.log(res);
@@ -96,10 +102,17 @@ Page({
 
     videoPlay(e) {
         let id = e.currentTarget.dataset.imgid;
-        console.log(id);
+        // console.log(id);
         this.setData({
             playingId: id
         });
+    },
+
+    timeFormat(str) {
+        console.log(str);
+        let date = new Date(str),
+            result = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate() + ' / ' + (Number(date.getHours()) < 10 ? ('0'+date.getHours()) : date.getHours()) + ':' + (Number(date.getMinutes()) < 10 ? ('0'+date.getMinutes()) : date.getMinutes());
+        return result;
     },
 
     server(data, url, callback, method) {

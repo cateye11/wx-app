@@ -92,9 +92,11 @@
 }
 
 .hot-desc {
-  font-size: 0.8rem;
-  line-height: 1.3;
-  width: 19rem;
+  width: 100%;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  padding: 0 15px;
+  box-sizing: border-box;
   margin: 15px 0;
 }
 
@@ -159,7 +161,7 @@ video {
 
 .sub-detail .desc {
   font-size: 0.9rem;
-  line-height: 1.3;
+  line-height: 1.4;
   margin: 20px 0 15px 0;
 }
 
