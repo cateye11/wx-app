@@ -90,7 +90,7 @@ Page({
 
     server(data, url, callback, method) {
         wx.request({
-            url: 'https://prod-api.kankanapp.com.cn/api/v3/'+url,
+            url:url,
             data: data || {},
             method: method || 'GET',
             header: {
