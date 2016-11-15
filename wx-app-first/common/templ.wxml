@@ -1,4 +1,0 @@
-<template name="list-item">
-    {{text}}
-</template>
-<view>import content</view>

@@ -1,8 +1,8 @@
 <!--index.wxml-->
 <view class="container">
-    <!--<view hidden="{{!isLoading}}" class="loading">
+    <view hidden="{{!isLoading}}" class="loading">
         <image src="../../src/load.png" />
-    </view>-->
+    </view>
     <view class="flex-row head-nav al-center">
         <view class="{{currentType == 'hot' ? 'type-selected' : ''}}" data-type="hot" bindtap="changeType">热门</view>
         <text>|</text>
@@ -65,8 +65,8 @@
                     </view>
                 </view>
                 <view class="sub-platform fx-row al-center">
-                    <text>来自Instagram</text>
-                    <image src="../../src/instagram.png" />
+                    <text>来自{{platform}}</text>
+                    <image src="../../src/{{platform}}.png" />
                 </view>
             </view>
         </view>
